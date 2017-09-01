@@ -1,14 +1,15 @@
 <html>
 <head>
-
+<title>File name for Teads.tv MySQL Migrations</title>
 </head>
 <body>
-<form>
-    <input type="text">
+<form style="margin: 5% auto; width: 70%;" onkeypress="return event.keyCode != 13;">
+    <label for="text">File Description:</label>
+    <input id="text" type="text" size="70" onkeyup="inputKeyUp(event)">
     <input type="button" onclick="getv()" value="get File Name">
 </form>
 
-<h3></h3>
+<h3 style="margin: 2% auto; width: 50%;"></h3>
 </body>
 
 <script>
@@ -138,12 +139,17 @@
         return dateFormat(this, mask, utc);
     };
 
-
-    function getv(e) {
+    function inputKeyUp(e) {
+        e.which = e.which || e.keyCode;
+        if(e.which == 13) {
+            getv();
+        }
+    }
+    function getv() {
     var t = document.querySelectorAll("form")[0][0].value;
     var o = document.querySelectorAll("h3")[0];
 
-    o.innerText = "V"+dateFormat("UTC:yyyymmddHHMM") + "__" + t;
+    o.innerText = "V"+dateFormat("UTC:yyyymmddHHMM") + "__" + t.replace(/ /g,"_");
 
 
 }
