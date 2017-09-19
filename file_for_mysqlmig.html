@@ -1,157 +1,200 @@
-<html>
-<head>
-<title>File name for Teads.tv MySQL Migrations</title>
-</head>
-<body>
-<form style="margin: 5% auto; width: 70%;" onkeypress="return event.keyCode != 13;">
-    <label for="text">File Description:</label>
-    <input id="text" type="text" size="70" onkeyup="inputKeyUp(event)">
-    <input type="button" onclick="getv()" value="get File Name">
-</form>
 
-<h3 style="margin: 2% auto; width: 50%;"></h3>
-</body>
+<html style="font-family: monospace;">
+    <head>
+        <title>File name for MySQL migrations</title>
+        <link href="favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <form style="margin: 5% auto; width: 70%;" onkeypress="return event.keyCode != 13;">
+            <label for="text">Support ticket:</label>
+            <input id="text" type="text" style="margin-left: 20px;" size="20">
+            <br>
+            <label for="text">File description:</label>
+            <input id="text" type="text" size="70" style="margin-left: 10px;" onkeyup="inputKeyUp(event)">
+            <br>
+            <br>
 
-<script>
-    /*
-     * Date Format 1.2.3
-     * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
-     * MIT license
-     *
-     * Includes enhancements by Scott Trenda <scott.trenda.net>
-     * and Kris Kowal <cixar.com/~kris.kowal/>
-     *
-     * Accepts a date, a mask, or a date and a mask.
-     * Returns a formatted version of the given date.
-     * The date defaults to the current date/time.
-     * The mask defaults to dateFormat.masks.default.
-     */
+            <input type="button" onclick="getv()" value="Get file name">
+        </form>
+        <div style="margin: 2% auto; width: 50%;">
+          <h3 style="user-select: all;margin: 5px 20px; float: left;"></h3>
+          <input type="image"
+          style="height: 25px; border: 2px solid #bbbaba;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAEpklEQVR4Xu2cV5IUMQyGtQcgH4ScbkCG65LjcXgkvUG5qrfY8c6MLLeD2v54RZatX99IsrtqT4R/UytwMnX0BC8AMDkEAAAAkyswefhUAACYXIHJw6cCAMDkCkwePhUAACZXYPLwqQAAMLkCk4dPBQCAyRWYPHwqAAC4V+Cv+xOKfBORxyLyYwNn3TniFirAFgAIon4VkSdbgwAAyv5kAwShEvws67aeNwAor+2XpRJsAoItAuDpzBdE5LWIPIw4+iwiT7dQCTyJeei3GM8A3s58cYHgwR4Iwkzwq3yRKefRm5j7IvMOQDjzIQg+LZXALQQAUO7HFCB4IyL3I5euIQAAHQBLBbq0QHAvcvtRRJ55bAcAUBaA4O0QBB8WCH7rW7azAABda0sFOPUWIHgrIncj9+4gAIA6AASvlxcI7kRbvBeR5yLiohL0AGDt027rM+dUgNOcH4LgnYi88ABBazGDMDMBcFoJQsJvR5UgtIiXvSEAgHot4KznKyISILi1B4JQCf7ox6hjAQC6rmtagHsIPACgnaFUAvRU77couf/VpRLcjLYKD0ihHTSvBJr4uaIdW2cV1Gpf+syl9z8EQfio9Ko1BACg41IagLBjgCBcB29E2wcIHulHKmcBALqWNQAIu15bILgeHaFpTpputgRqFdRqr6fUZlFz/wDBdwA4npCaCUhBofb+tf0fjZEKoCNQO0G1/QOAnuOjFrUTVNs/ABQGYKW7c3+ZDQAURbsKVODbRRxe3Ha7xscMoP+e1368AoBIASvxVns9pTYLALDppVpbE2q1Vw/gzKBrfLSA/jQAgPMhsDYiAAAAOwo0rcpNN9votwAqQGEFrCXPal/4uNXddY2PClA9v+oGAMAMwAxwjIGuvxD197veoGt8tID1CVzrAQBoAbQAWsB/BZpW5aab8Q6wl3NaAC2AFkALoAUcZKBriVw74ies7xofM0BChiqbAAAzADMAMwAzADPAokDTttx0M94BeAcICliHHqt95ZmtuPuu8VEBiufT7BAAuAVwC+AWwC2AWwC3gP0MdO2R5o5uX9A1PoZAe8JKrwAAhkCGQIZAhkCGQIZAhsCgQNO5rOlmfAvgWwDfAs4zwC2AWwC3AG4B3AK4BXAL4BbALWAPA12HpNLvvt7i4xrYIMOeh1wAAIDmClhLutW+eUArN+waHxVgZfYKLAcAzz2yQII1FwAAALwE8hLISyAvgbwE8hLIS6C3lzJtgivw/wyBDIEMgQyBDIEMgQyBaUNggbbr2kXT19mmmy2yW4ee2N519gocrmlOmm4GAEl4NM1J080AAACCAtYWkKSaI6NNxbeFCuAot0lHAQAedvo97CQhesaICmBVTLenAlABqAA87XZ62tUL1K4FLcCqmG5PC6AF0AIsLUD/TW3bokeVTVasx+F4209OT31DABhT4+SoACBZqmzDHhonH9b14ZKjwDBbAQDIlm6MhQAwRh6zowCAbOnGWAgAY+QxOwoAyJZujIUAMEYes6MAgGzpxlgIAGPkMTsKAMiWboyFADBGHrOjAIBs6cZYCABj5DE7CgDIlm6MhQAwRh6zowCAbOnGWPgPROExkAC6k4wAAAAASUVORK5CYII=" id="copybtn" value="COpy">
+          <h5></h5>
+        </div>
 
-    var dateFormat = function () {
-        var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
-            timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
-            timezoneClip = /[^-+\dA-Z]/g,
-            pad = function (val, len) {
-                val = String(val);
-                len = len || 2;
-                while (val.length < len) val = "0" + val;
-                return val;
-            };
+    </body>
+    <script>
+        /*
+         * Date Format 1.2.3
+         * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
+         * MIT license
+         *
+         * Includes enhancements by Scott Trenda <scott.trenda.net>
+         * and Kris Kowal <cixar.com/~kris.kowal/>
+         *
+         * Accepts a date, a mask, or a date and a mask.
+         * Returns a formatted version of the given date.
+         * The date defaults to the current date/time.
+         * The mask defaults to dateFormat.masks.default.
+         */
 
-        // Regexes and supporting functions are cached through closure
-        return function (date, mask, utc) {
-            var dF = dateFormat;
-
-            // You can't provide utc if you skip other args (use the "UTC:" mask prefix)
-            if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
-                mask = date;
-                date = undefined;
-            }
-
-            // Passing date through Date applies Date.parse, if necessary
-            date = date ? new Date(date) : new Date;
-            if (isNaN(date)) throw SyntaxError("invalid date");
-
-            mask = String(dF.masks[mask] || mask || dF.masks["default"]);
-
-            // Allow setting the utc argument via the mask
-            if (mask.slice(0, 4) == "UTC:") {
-                mask = mask.slice(4);
-                utc = true;
-            }
-
-            var	_ = utc ? "getUTC" : "get",
-                d = date[_ + "Date"](),
-                D = date[_ + "Day"](),
-                m = date[_ + "Month"](),
-                y = date[_ + "FullYear"](),
-                H = date[_ + "Hours"](),
-                M = date[_ + "Minutes"](),
-                s = date[_ + "Seconds"](),
-                L = date[_ + "Milliseconds"](),
-                o = utc ? 0 : date.getTimezoneOffset(),
-                flags = {
-                    d:    d,
-                    dd:   pad(d),
-                    ddd:  dF.i18n.dayNames[D],
-                    dddd: dF.i18n.dayNames[D + 7],
-                    m:    m + 1,
-                    mm:   pad(m + 1),
-                    mmm:  dF.i18n.monthNames[m],
-                    mmmm: dF.i18n.monthNames[m + 12],
-                    yy:   String(y).slice(2),
-                    yyyy: y,
-                    h:    H % 12 || 12,
-                    hh:   pad(H % 12 || 12),
-                    H:    H,
-                    HH:   pad(H),
-                    M:    M,
-                    MM:   pad(M),
-                    s:    s,
-                    ss:   pad(s),
-                    l:    pad(L, 3),
-                    L:    pad(L > 99 ? Math.round(L / 10) : L),
-                    t:    H < 12 ? "a"  : "p",
-                    tt:   H < 12 ? "am" : "pm",
-                    T:    H < 12 ? "A"  : "P",
-                    TT:   H < 12 ? "AM" : "PM",
-                    Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
-                    o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
-                    S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
+        var dateFormat = function () {
+            var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
+                timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
+                timezoneClip = /[^-+\dA-Z]/g,
+                pad = function (val, len) {
+                    val = String(val);
+                    len = len || 2;
+                    while (val.length < len) val = "0" + val;
+                    return val;
                 };
 
-            return mask.replace(token, function ($0) {
-                return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
-            });
+                // Regexes and supporting functions are cached through closure
+                return function (date, mask, utc) {
+                var dF = dateFormat;
+
+                // You can't provide utc if you skip other args (use the "UTC:" mask prefix)
+                if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
+                    mask = date;
+                    date = undefined;
+                }
+
+                // Passing date through Date applies Date.parse, if necessary
+                date = date ? new Date(date) : new Date;
+                if (isNaN(date)) throw SyntaxError("invalid date");
+
+                mask = String(dF.masks[mask] || mask || dF.masks["default"]);
+
+                // Allow setting the utc argument via the mask
+                if (mask.slice(0, 4) == "UTC:") {
+                    mask = mask.slice(4);
+                    utc = true;
+                }
+
+                var	_ = utc ? "getUTC" : "get",
+                    d = date[_ + "Date"](),
+                    D = date[_ + "Day"](),
+                    m = date[_ + "Month"](),
+                    y = date[_ + "FullYear"](),
+                    H = date[_ + "Hours"](),
+                    M = date[_ + "Minutes"](),
+                    s = date[_ + "Seconds"](),
+                    L = date[_ + "Milliseconds"](),
+                    o = utc ? 0 : date.getTimezoneOffset(),
+                    flags = {
+                        d:    d,
+                        dd:   pad(d),
+                        ddd:  dF.i18n.dayNames[D],
+                        dddd: dF.i18n.dayNames[D + 7],
+                        m:    m + 1,
+                        mm:   pad(m + 1),
+                        mmm:  dF.i18n.monthNames[m],
+                        mmmm: dF.i18n.monthNames[m + 12],
+                        yy:   String(y).slice(2),
+                        yyyy: y,
+                        h:    H % 12 || 12,
+                        hh:   pad(H % 12 || 12),
+                        H:    H,
+                        HH:   pad(H),
+                        M:    M,
+                        MM:   pad(M),
+                        s:    s,
+                        ss:   pad(s),
+                        l:    pad(L, 3),
+                        L:    pad(L > 99 ? Math.round(L / 10) : L),
+                        t:    H < 12 ? "a"  : "p",
+                        tt:   H < 12 ? "am" : "pm",
+                        T:    H < 12 ? "A"  : "P",
+                        TT:   H < 12 ? "AM" : "PM",
+                        Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
+                        o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
+                        S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
+                    };
+
+                return mask.replace(token, function ($0) {
+                    return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
+                });
+            };
+        }();
+
+        // Some common format strings
+        dateFormat.masks = {
+            "default":      "ddd mmm dd yyyy HH:MM:ss",
+            shortDate:      "m/d/yy",
+            mediumDate:     "mmm d, yyyy",
+            longDate:       "mmmm d, yyyy",
+            fullDate:       "dddd, mmmm d, yyyy",
+            shortTime:      "h:MM TT",
+            mediumTime:     "h:MM:ss TT",
+            longTime:       "h:MM:ss TT Z",
+            isoDate:        "yyyy-mm-dd",
+            isoTime:        "HH:MM:ss",
+            isoDateTime:    "yyyy-mm-dd'T'HH:MM:ss",
+            isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
         };
-    }();
 
-    // Some common format strings
-    dateFormat.masks = {
-        "default":      "ddd mmm dd yyyy HH:MM:ss",
-        shortDate:      "m/d/yy",
-        mediumDate:     "mmm d, yyyy",
-        longDate:       "mmmm d, yyyy",
-        fullDate:       "dddd, mmmm d, yyyy",
-        shortTime:      "h:MM TT",
-        mediumTime:     "h:MM:ss TT",
-        longTime:       "h:MM:ss TT Z",
-        isoDate:        "yyyy-mm-dd",
-        isoTime:        "HH:MM:ss",
-        isoDateTime:    "yyyy-mm-dd'T'HH:MM:ss",
-        isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
-    };
+        // Internationalization strings
+        dateFormat.i18n = {
+            dayNames: [
+                "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
+                "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            ],
+            monthNames: [
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+            ]
+        };
 
-    // Internationalization strings
-    dateFormat.i18n = {
-        dayNames: [
-            "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
-            "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-        ],
-        monthNames: [
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-        ]
-    };
+        // For convenience...
+        Date.prototype.format = function (mask, utc) {
+            return dateFormat(this, mask, utc);
+        };
 
-    // For convenience...
-    Date.prototype.format = function (mask, utc) {
-        return dateFormat(this, mask, utc);
-    };
-
-    function inputKeyUp(e) {
-        e.which = e.which || e.keyCode;
-        if(e.which == 13) {
-            getv();
+        function inputKeyUp(e) {
+            e.which = e.which || e.keyCode;
+            if(e.which == 13) {
+                getv();
+            }
         }
-    }
-    function getv() {
-    var t = document.querySelectorAll("form")[0][0].value;
-    var o = document.querySelectorAll("h3")[0];
 
-    o.innerText = "V"+dateFormat("UTC:yyyymmddHHMM") + "__" + t.replace(/ /g,"_");
+        function getv() {
+            var t = document.querySelectorAll("form")[0][0].value;
+            var tt = document.querySelectorAll("form")[0][1].value;
+            var o = document.querySelectorAll("h3")[0];
+            o.innerText = "V"+dateFormat("UTC:yyyymmddHHMM") + "__" + t.replace(/ /g,"_").toUpperCase() + "_" + tt.replace(/ /g,"_") + ".sql";
+        }
 
 
-}
-</script>
+
+        // Setup the variables
+var text = document.querySelectorAll("h3")[0];
+var answer  = document.querySelectorAll("h5")[0];
+var copy    = document.getElementById("copybtn");
+copy.addEventListener('click', function(e) {
+
+
+   //try {
+   var range = document.createRange();
+   range.selectNodeContents(text);
+   var sel = window.getSelection();
+   sel.removeAllRanges();
+   sel.addRange(range);
+ //} catch (err) {
+  //   answer.innerHTML = 'select manually';
+ //}
+
+   // Use try & catch for unsupported browser
+   try {
+       // The important part (copy selected text)
+       var ok = document.execCommand('copy');
+
+       if (ok) answer.innerHTML = 'Copied!';
+       else    answer.innerHTML = 'Unable to copy!';
+   } catch (err) {
+       answer.innerHTML = 'Unsupported Browser!';
+   }
+});
+
+    </script>
 </html>
